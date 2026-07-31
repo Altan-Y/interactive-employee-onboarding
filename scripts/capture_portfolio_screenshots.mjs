@@ -43,21 +43,23 @@ await page.screenshot({ path: 'screenshots/onboarding-tutorial.png', fullPage: t
 
 await page.goto(`${baseUrl}/preview/dark.html`, { waitUntil: 'networkidle' });
 await page.evaluate(() => {
-  const sidebar = document.querySelector('.ieod-sidebar__list');
+  const sidebar = document.querySelector('.ieod-sidebar ol');
+  if (!sidebar) throw new Error('Preview sidebar not found');
   sidebar.innerHTML = `
-    <li><a class="is-current" href="#">Password</a></li>
-    <li><a href="#">Two-factor authentication</a></li>
-    <li><a href="#">VPN</a></li>
-    <li><a href="#">Email signature</a></li>
-    <li><a href="#">Company Portal</a></li>
-    <li><a href="#">Toolbox</a></li>
-    <li><a href="#">IT policy</a></li>
-    <li><a href="#">Phishing awareness</a></li>
-    <li><a href="#">IT contact</a></li>`;
+    <li><span class="is-current">Password</span></li>
+    <li><span>Two-factor authentication</span></li>
+    <li><span>VPN</span></li>
+    <li><span>Email signature</span></li>
+    <li><span>Company Portal</span></li>
+    <li><span>Toolbox</span></li>
+    <li><span>IT policy</span></li>
+    <li><span>Phishing awareness</span></li>
+    <li><span>IT contact</span></li>`;
   const content = document.querySelector('.ieod-content');
+  if (!content) throw new Error('Preview content not found');
   content.innerHTML = `
-    <div class="ieod-page-heading"><div><h1>Change your temporary password</h1><p>Create a strong personal password before using company services.</p></div><button class="ieod-icon-btn">Demo scope</button></div>
-    <section class="ieod-scope-panel"><strong>Demo note:</strong> Screens, links and account actions are fictionalized. The original production workflow connected employees to approved internal systems.</section>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px"><div><h1>Change your temporary password</h1><p>Create a strong personal password before using company services.</p></div><button class="ieod-icon-btn">Demo scope</button></div>
+    <section style="margin:20px 0;padding:16px;border:1px solid #34517a;border-radius:12px;background:#1d2d47"><strong>Demo note:</strong> Screens, links and account actions are fictionalized. The original production workflow connected employees to approved internal systems.</section>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0"><button class="ieod-btn ieod-btn--primary">Open the secure password-change portal</button><button class="ieod-btn">Create a compliant password</button><button class="ieod-btn">Reconnect your apps</button></div>
     <section style="border:1px solid #39465a;border-left:4px solid #3977d6;border-radius:14px;padding:18px;background:#202735">
       <h2 style="margin-top:0">Open the secure password-change portal</h2>
