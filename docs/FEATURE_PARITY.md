@@ -8,13 +8,14 @@
 | Office / remote branching | Yes | Yes |
 | Office-dependent VPN order | Yes | Yes, fictional office names |
 | Dynamic flow navigation | Yes | Yes |
-| Back / Next / start controls | Yes | Yes |
-| Browser progress persistence | Yes | Yes, localStorage |
-| First-visit tutorial and replay | Yes | Yes |
-| Instruction tabs and cards | Yes | Yes |
-| Image lightbox | Yes | Yes, neutral illustrations |
+| Back / Next / lock controls | Yes | Yes |
+| Browser state persistence | Yes | Device, location and theme selections only |
+| Guided tutorial and replay | Yes | Yes, modal walkthrough |
+| Instruction cards | Yes | Yes |
+| Production instruction tabs | Yes | Not included in the current public release |
+| Image lightbox | Yes | Not included; production media is not redistributed |
 | Dark mode | Yes | Yes |
-| Completion animation | Yes | Yes |
+| Completion animation / analytics | Environment-dependent | Not included |
 | Real internal links and contacts | Yes | No |
 | Real screenshots and tutorial videos | Yes | No |
 | Live password change | Linked from the guide | No |
@@ -25,6 +26,6 @@
 
 ## Visual parity
 
-Version 1.2 follows the original layout pattern: dark centered access card, centered brand area, WordPress-style sidebar/content layout, blue pill selections, compact step cards with a blue left border, tab navigation and a floating low-opacity bottom control bar.
+Version 1.2.1 follows the original layout pattern: dark centered access card, centered brand area, WordPress-style sidebar/content layout, blue choice controls, compact step cards with a blue left border and a floating Back/Next control bar.
 
-The production logo, proprietary media and redistributed font files are intentionally replaced.
+The production logo, proprietary media, redistributed font files and live integrations are intentionally replaced or omitted.
