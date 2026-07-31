@@ -19,7 +19,26 @@
 
 This project transforms presentation-led IT onboarding into a guided website. The flow adapts to the user's account type, device and workplace, remembers route and theme selections in the browser, and presents setup instructions as focused step cards.
 
-The public repository is an **independently rewritten demonstration**. It recreates the product idea, visual language and branching behavior of an internal WordPress solution without publishing employer code, branding, internal links, contacts, credentials, screenshots, videos or confidential instructions.
+The public repository is an **independently rewritten demonstration**. It recreates the product idea, visual language and branching behavior of an internal WordPress solution without publishing employer code, branding, internal links, contacts, credentials, original internal media or confidential instructions.
+
+## Product gallery
+
+<p align="center">
+  <img src="screenshots/onboarding-gallery.webp" alt="Interactive Employee Onboarding gallery showing access, flow selection, tutorial and setup instructions" width="100%">
+</p>
+
+<table>
+<tr>
+<td width="50%" valign="top"><strong>Protected access</strong><br><br><img src="screenshots/onboarding-access.webp" alt="Password-protected onboarding demo access"></td>
+<td width="50%" valign="top"><strong>Adaptive device selection</strong><br><br><img src="screenshots/onboarding-device-selection.webp" alt="Onboarding device and flow selection"></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><strong>Guided tutorial</strong><br><br><img src="screenshots/onboarding-tutorial.webp" alt="Onboarding guided tutorial overlay"></td>
+<td width="50%" valign="top"><strong>Example setup step</strong><br><br><img src="screenshots/onboarding-password-step.webp" alt="Example onboarding password setup instruction"></td>
+</tr>
+</table>
+
+The screenshots are generated from the public static preview in a clean browser environment. They show only fictional instructions, placeholder portals and synthetic demo content.
 
 ## Product experience
 
@@ -68,7 +87,7 @@ See [Architecture](docs/ARCHITECTURE.md) for the detailed component model.
 | Integrations | Internal portals and support paths | Clearly labeled placeholders |
 | Password/MFA | Real account actions | Explanatory simulation only |
 | VPN/MDM | Real profiles and enrollment | No provisioning or device changes |
-| Media | Internal screenshots and videos | Not redistributed; text-based placeholders |
+| Media | Internal screenshots and videos | Newly generated synthetic demo screenshots; no internal media redistributed |
 | Completion/analytics | Environment-dependent | Not included in the current public release |
 
 This separation is deliberate. The repository demonstrates the flow architecture and frontend/backend work while protecting confidential information and employer intellectual property. Read [Production concept vs. demo](docs/PRODUCTION_VS_DEMO.md) and [Feature parity](docs/FEATURE_PARITY.md).
@@ -131,6 +150,7 @@ interactive-employee-onboarding/
 ├── assets/
 ├── docs/
 ├── preview/
+├── screenshots/
 ├── scripts/
 ├── wordpress/wp-content/plugins/
 │   └── interactive-employee-onboarding-demo/
