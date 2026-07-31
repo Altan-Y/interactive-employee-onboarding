@@ -17,7 +17,7 @@
 
 ## Overview
 
-This project transforms presentation-led IT onboarding into a guided website. The flow adapts to the user's account type, device and workplace, remembers progress, and presents setup instructions as focused step cards.
+This project transforms presentation-led IT onboarding into a guided website. The flow adapts to the user's account type, device and workplace, remembers route and theme selections in the browser, and presents setup instructions as focused step cards.
 
 The public repository is an **independently rewritten demonstration**. It recreates the product idea, visual language and branching behavior of an internal WordPress solution without publishing employer code, branding, internal links, contacts, credentials, screenshots, videos or confidential instructions.
 
@@ -27,11 +27,10 @@ The public repository is an **independently rewritten demonstration**. It recrea
 - Mac and Windows branches;
 - office and remote-work branches;
 - office-dependent ordering of VPN steps;
-- persistent progress and dynamic flow navigation;
-- compact instruction cards and tabbed guidance;
+- browser-persisted device, location and theme selections;
+- compact instruction cards and dynamic flow navigation;
 - responsive light and dark modes;
-- guided tutorial, media lightbox and completion feedback;
-- clear in-app disclosure of public-demo limitations.
+- clean guided tutorial and in-app demo-scope disclosure.
 
 The interface intentionally stays close to the original interaction pattern: a dark-blue access page, centered brand area, left-hand flow navigation, classic WordPress content layout, blue choice buttons and a floating Back/Next navigation bar.
 
@@ -43,7 +42,7 @@ flowchart LR
     Gate --> Plugin[Custom WordPress plugin]
     Plugin --> Router[Branching flow logic]
     Router --> Pages[Generated onboarding pages]
-    Plugin --> Browser[Progress + theme state]
+    Plugin --> Browser[Route + theme state]
     WordPress[(WordPress)] --> MariaDB[(MariaDB)]
     Docker[Docker Compose] --> WordPress
     Docker --> MariaDB
@@ -69,8 +68,8 @@ See [Architecture](docs/ARCHITECTURE.md) for the detailed component model.
 | Integrations | Internal portals and support paths | Clearly labeled placeholders |
 | Password/MFA | Real account actions | Explanatory simulation only |
 | VPN/MDM | Real profiles and enrollment | No provisioning or device changes |
-| Media | Internal screenshots and videos | Neutral text and visual placeholders |
-| Tracking | Production-dependent | Browser-local progress only |
+| Media | Internal screenshots and videos | Not redistributed; text-based placeholders |
+| Completion/analytics | Environment-dependent | Not included in the current public release |
 
 This separation is deliberate. The repository demonstrates the flow architecture and frontend/backend work while protecting confidential information and employer intellectual property. Read [Production concept vs. demo](docs/PRODUCTION_VS_DEMO.md) and [Feature parity](docs/FEATURE_PARITY.md).
 
@@ -140,14 +139,14 @@ interactive-employee-onboarding/
 └── README.md
 ```
 
-## Stability improvements in v1.2
+## Stability improvements in v1.2.1
 
 - theme changes are bound only to the dedicated theme control;
-- tutorial brightness and spotlight contrast were rebalanced;
-- the tutorial popover stays within the viewport;
+- the tutorial uses a balanced overlay and centered, viewport-safe dialog;
 - tutorial actions use a stable horizontal layout;
 - mobile button height and positioning were corrected;
-- a new local-storage namespace prevents stale demo settings.
+- a new local-storage namespace prevents stale demo settings;
+- all missing production capabilities are documented instead of being implied.
 
 ## Security and privacy
 
