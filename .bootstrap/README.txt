@@ -1,0 +1,1 @@
+Temporary import staging directory. This file will be removed automatically after the screenshot update.
