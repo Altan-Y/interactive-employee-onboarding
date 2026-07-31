@@ -1,0 +1,59 @@
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: onboarding_demo
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - onboarding_db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  wordpress:
+    image: wordpress:php8.3-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8081:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: onboarding_demo
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DEBUG: "0"
+      ONBOARDING_DEMO_PASSWORD: ${ONBOARDING_DEMO_PASSWORD:-demo123}
+      ONBOARDING_GUEST_PASSWORD: ${ONBOARDING_GUEST_PASSWORD:-guest123}
+    volumes:
+      - onboarding_wordpress:/var/www/html
+      - ./wordpress/wp-content/plugins/interactive-employee-onboarding-demo:/var/www/html/wp-content/plugins/interactive-employee-onboarding-demo:ro
+
+  setup:
+    image: wordpress:cli-php8.3
+    user: "33:33"
+    depends_on:
+      wordpress:
+        condition: service_started
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: onboarding_demo
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      HOME: /tmp
+    volumes:
+      - onboarding_wordpress:/var/www/html
+      - ./wordpress/wp-content/plugins/interactive-employee-onboarding-demo:/var/www/html/wp-content/plugins/interactive-employee-onboarding-demo:ro
+      - ./scripts:/scripts:ro
+    entrypoint: ["sh", "/scripts/init-wordpress.sh"]
+    restart: "no"
+
+volumes:
+  onboarding_db:
+  onboarding_wordpress:
