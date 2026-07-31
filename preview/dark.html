@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-ieod-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Employee Onboarding — Dark Preview</title>
+  <link rel="stylesheet" href="../wordpress/wp-content/plugins/interactive-employee-onboarding-demo/assets/css/onboarding.css">
+</head>
+<body class="ieod-site">
+<div class="ieod-app">
+  <header class="ieod-header">
+    <a class="ieod-brand" href="#"><span>O</span> ONBOARD</a>
+    <div><button class="ieod-icon-btn" type="button">Tour</button><button class="ieod-theme-switch" id="theme" type="button" aria-label="Toggle dark mode">☀</button></div>
+  </header>
+  <div class="ieod-shell">
+    <aside class="ieod-sidebar">
+      <p>Flow</p>
+      <ol>
+        <li><span class="is-current">Device selection</span></li>
+        <li><span>Office / Remote</span></li>
+        <li><span>Password change</span></li>
+        <li><span>Two-factor authentication</span></li>
+        <li><span>VPN configuration</span></li>
+        <li><span>Email signature</span></li>
+        <li><span>Workplace tools</span></li>
+      </ol>
+    </aside>
+    <main class="ieod-content">
+      <p class="ieod-eyebrow">WELCOME</p>
+      <h1>IT-Onboarding</h1>
+      <p>Choose the device that you want to configure. Your selection determines the remaining route.</p>
+      <section class="ieod-question-card">
+        <h2>What do you need to set up?</h2>
+        <div class="ieod-choice-grid">
+          <button class="ieod-choice-card"><strong>I have a Mac</strong><span>macOS setup flow</span></button>
+          <button class="ieod-choice-card"><strong>I have a Windows PC</strong><span>Windows setup flow</span></button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="ieod-bottom-bar"><button class="ieod-btn">Back</button><div><button class="ieod-btn">Lock demo</button><button class="ieod-btn">Demo scope</button></div><button class="ieod-btn ieod-btn--primary">Next</button></footer>
+</div>
+<script>
+const root=document.documentElement;document.getElementById('theme').addEventListener('click',(event)=>{event.preventDefault();event.stopPropagation();root.dataset.ieodTheme=root.dataset.ieodTheme==='dark'?'light':'dark';event.currentTarget.textContent=root.dataset.ieodTheme==='dark'?'☀':'◐';});
+</script>
+</body>
+</html>
