@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Interactive Employee Onboarding Demo
  * Description: Privacy-safe, independently rewritten onboarding flow demo with password gate, branching navigation, tutorial, dark mode and responsive step cards.
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: Altan Yildirim
  * License: MIT
  */
@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('IEOD_VERSION', '1.2.0');
+define('IEOD_VERSION', '1.2.1');
 define('IEOD_FILE', __FILE__);
 define('IEOD_DIR', plugin_dir_path(__FILE__));
 define('IEOD_URL', plugin_dir_url(__FILE__));
