@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP syntax
+        run: |
+          find wordpress/wp-content/plugins/interactive-employee-onboarding-demo -name '*.php' -print0 \
+            | xargs -0 -n1 php -l
+      - name: JavaScript syntax
+        run: node --check wordpress/wp-content/plugins/interactive-employee-onboarding-demo/assets/js/onboarding.js
+      - name: Privacy scan
+        run: |
+          ! grep -RniE '@example\.internal|internal-host|production-secret|company-vpn' . \
+            --exclude-dir=.git --exclude='README.md' --exclude='ci.yml'
